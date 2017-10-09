@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>HTML5 Canvas PRISM implementation - BETA</title>
+
+<script type="text/javascript">
+function IsJsonString(e){try{JSON.parse(e)}catch(t){return!1}return!0}function handleFileSelect(e){var t=e.target.files
+f=t[0]
+var r=new FileReader
+r.onload=function(){return function(e){IsJsonString(e.target.result)?canvasApp(JSON.parse(e.target.result)):alert("The uploaded file is not in a valid format. If in doubt validate your JSON content.")}}(f),r.readAsText(f,"utf-8")}function doubleTap(){return null==clickTimer?(clickTimer=setTimeout(function(){clickTimer=null},250),"mousedown"):(clearTimeout(clickTimer),clickTimer=null,"dblclick")}function touchHandler(e){var t=e.changedTouches,r=t[0],n=""
+switch(e.type){case"touchstart":n=doubleTap()
+break
+case"touchmove":n="mousemove",e.preventDefault()
+break
+case"touchend":n="mouseup"
+break
+default:return}var o=document.createEvent("MouseEvent")
+o.initMouseEvent(n,!0,!0,window,1,r.screenX,r.screenY,r.clientX,r.clientY,!1,!1,!1,!1,0,null),r.target.dispatchEvent(o)}function windowLoadHandler(){document.addEventListener("touchstart",touchHandler,!0),document.addEventListener("touchmove",touchHandler,!0),document.addEventListener("touchend",touchHandler,!0),document.addEventListener("touchcancel",touchHandler,!0),document.getElementById("files").addEventListener("change",handleFileSelect,!1),canvasApp("right")}function downloadInnerHtml(e,t,r){var n=document.getElementById(e).innerHTML.replace(/<br>/g,"\n"),o=document.createElement("a")
+fileName=null==t||""==t?"results.txt":t,r=r||"text/plain",o.setAttribute("download",t),o.setAttribute("href","data:"+r+";charset=utf-8,"+encodeURIComponent(n)),o.click()}function toggleHand(e){if("right"==e)canvasApp("right")
+else{if("left"!=e)return
+canvasApp("left")}}function canvasApp(e){function t(){I=window.innerWidth<1e3?1e3:window.innerWidth,B=window.innerHeight<600?600:window.innerHeight,w=9,v=[],b=[],x=[],y=[],b.push({r:178,g:34,b:42}),b.push({r:0,g:0,b:205}),b.push({r:34,g:139,b:34}),b.push({r:255,g:140,b:0}),b.push({r:255,g:230,b:0}),b.push({r:75,g:0,b:130}),b.push({r:0,g:0,b:0}),b.push({r:255,g:255,b:255}),b.push({r:128,g:128,b:128}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:0,g:0,b:0}),x.push({r:0,g:0,b:0}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:0,g:0,b:0}),x.push({r:255,g:255,b:255})
+var e
+for(e=0;w>e;e++)y.push({t:prev.Data[e].Name}),v[e]||v.push({}),v[e].txt=prev.Data[e].Name,v[e].x=prev.Data[e].x,v[e].y=prev.Data[e].y,v[e].xper=prev.Data[e].xper,v[e].yper=prev.Data[e].yper,v[e].color="rgb("+b[e].r+","+b[e].g+","+b[e].b+")",v[e].tcol="rgb("+x[e].r+","+x[e].g+","+x[e].b+")"
+s(),alert("Previous session successfully loaded."),g.addEventListener("mousedown",o,!1),g.addEventListener("dblclick",h,!1)}function r(){I=window.innerWidth<1e3?1e3:window.innerWidth,B=window.innerHeight<600?600:window.innerHeight,w=9,v=[],b=[],x=[],y=[],b.push({r:178,g:34,b:42}),b.push({r:0,g:0,b:205}),b.push({r:34,g:139,b:34}),b.push({r:255,g:140,b:0}),b.push({r:255,g:230,b:0}),b.push({r:75,g:0,b:130}),b.push({r:0,g:0,b:0}),b.push({r:255,g:255,b:255}),b.push({r:128,g:128,b:128}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:0,g:0,b:0}),x.push({r:0,g:0,b:0}),x.push({r:255,g:255,b:255}),x.push({r:255,g:255,b:255}),x.push({r:0,g:0,b:0}),x.push({r:255,g:255,b:255}),y.push({t:"Red"}),y.push({t:"Blue"}),y.push({t:"Green"}),y.push({t:"Orange"}),y.push({t:"Yellow"}),y.push({t:"Purple"}),y.push({t:"Black"}),y.push({t:"White"}),y.push({t:"Grey"}),s(),alert("Drag circles in place or back to the circle bank. Double click to change circle text. Have fun!"),g.addEventListener("mousedown",o,!1),g.addEventListener("dblclick",h,!1)}function n(){var t,r
+for(t=0;w>t;t++){if(v[t]||v.push({}),v[t].txt=v[t].txt||y[t].t,v[t].rad=v[t].rad||frameoffset-5,v[t].ox=v[t].ox||2*v[t].rad*(t+1)+5*t-(v[t].rad-10),v[t].oy=v[t].oy||topframe.height-(v[t].rad+5)+frameoffset+bottomframe.height,v[t].xper=v[t].xper||0,v[t].yper=v[t].yper||0,1==c)if(v[t].yper>110)v[t].x=v[t].ox,v[t].y=v[t].oy
+else if("right"==e)v[t].x=topframe.width-v[t].xper/100*(topframe.width-2*v[t].rad)-v[t].rad,v[t].y=topframe.height-v[t].yper/100*(topframe.height-2*v[t].rad)-v[t].rad
+else{if("left"!=e)return
+v[t].x=v[t].rad+v[t].xper/100*(topframe.width-2*v[t].rad),v[t].y=v[t].rad-1+v[t].yper/100*(topframe.height-2*v[t].rad)}else v[t].x=v[t].x||2*v[t].rad*(t+1)+5*t-(v[t].rad-10),v[t].y=v[t].y||topframe.height-(v[t].rad+5)+frameoffset+bottomframe.height
+r="rgb("+b[t].r+","+b[t].g+","+b[t].b+")",v[t].color=v[t].color||r,tempFont="rgb("+x[t].r+","+x[t].g+","+x[t].b+")",v[t].tcol=v[t].tcol||tempFont}c=0}function o(e){var t,r=-1,n=g.getBoundingClientRect()
+for(H=(e.clientX-n.left)*(g.width/n.width),k=(e.clientY-n.top)*(g.height/n.height),t=0;w>t;t++)l(v[t],H,k)&&(M=!0,t>r&&(L=H-v[t].x,T=k-v[t].y,r=t,E=t))
+return M&&window.addEventListener("mousemove",d,!1),g.removeEventListener("mousedown",o,!1),window.addEventListener("mouseup",a,!1),e.preventDefault?e.preventDefault():e.returnValue&&(e.returnValue=!1),!1}function a(){g.addEventListener("mousedown",o,!1),window.removeEventListener("mouseup",a,!1),M&&(M=!1,window.removeEventListener("mousemove",d,!1))}function h(e){var t=g.getBoundingClientRect()
+H=(e.clientX-t.left)*(g.width/t.width),k=(e.clientY-t.top)*(g.height/t.height)
+var r=-1
+for(i=0;i<w;i++)if(l(v[i],H,k)&&i>r){v[i].x,v[i].y,r=i,hitIndex=i
+var n=prompt("Enter the term to use for this circle.",v[hitIndex].txt)
+v[hitIndex].txt=null==n?v[hitIndex].txt:n}s()}function d(e){var t,r,n=v[E].rad,o=n,a=topframe.width-n,h=(bottomframe.width-n,bottomframe.height-7),d=n+2,l=topframe.height-n+2,u=g.getBoundingClientRect()
+if(H=(e.clientX-u.left)*(g.width/u.width),k=(e.clientY-u.top)*(g.height/u.height),t=H-L,t=o>t?o:t>a?a:t,r=k-T,r=d>r?d:r>l?r<d+frameoffset?l:l+frameoffset+h:r,r>=l+frameoffset){for(i=0;i<w;i++)v[i].y>=l+frameoffset&&v[i].x!=v[i].ox&&(v[i].x=v[i].ox)
+t=v[E].ox}v[E].x=t,v[E].y=r,s()}function l(e,t,r){var n,o
+return n=t-e.x,o=r-e.y,n*n+o*o<e.rad*e.rad}function u(){var e
+for(e=0;w>e;e++)m.fillStyle=v[e].color,m.beginPath(),m.arc(v[e].x,v[e].y,v[e].rad,0,2*Math.PI,!1),m.closePath(),m.fill(),m.fillStyle=v[e].tcol,m.fillText(v[e].txt,v[e].x,v[e].y)}function f(){var t,r=frameoffset-5,n='"Setup":[{"Control":[{"Hand":"'+e+'","Base":'+Math.round(100*(g.height-frameoffset)/100)+'}],"Canvas":[{"width":'+Math.round(100*g.width/100)+',"height":'+Math.round(100*g.height/100)+'}],"Top":[{"width":'+Math.round(100*topframe.width/100)+',"height":'+Math.round(100*topframe.height/100)+"}]}]",o="Hand: "+e+"\nCanvas width: "+Math.round(100*g.width/100)+"\nCanvas height: "+Math.round(100*g.height/100)+"\nTop width: "+Math.round(100*topframe.width/100)+"\nTop height: "+Math.round(100*topframe.height/100)+"\nBase: "+Math.round(100*(g.height-frameoffset)/100)+"\nAttribute, xAbs, yAbs, xPer, yPer",i=""
+for(t=0;w>t;t++){if("right"==e)v[t].xper=Math.round((topframe.width-v[t].x-r)/(topframe.width-2*r)*100*100)/100,v[t].yper=Math.round((topframe.height-v[t].y-r)/(topframe.height-2*r)*100*100)/100
+else{if("left"!=e)return
+v[t].xper=Math.round((v[t].x-r)/(topframe.width-2*r)*100*100)/100,v[t].yper=Math.round((v[t].y-r)/(topframe.height-2*r)*100*100)/100}i=(""!=i?i+",":"")+'{"Name":"'+v[t].txt+'","x":'+Math.round(100*v[t].x/100)+',"y":'+Math.round(100*v[t].y/100)+',"xper":'+v[t].xper+',"yper":'+v[t].yper+"}",o=o+'\n"'+v[t].txt+'",'+Math.round(100*v[t].x/100)+","+Math.round(100*v[t].y/100)+","+v[t].xper+","+v[t].yper}document.getElementById("outputjson").innerHTML="{"+n+',"Data":['+i+"]}",document.getElementById("outputcsv").innerHTML=o}function s(){if(g.width=I-50,g.height=B-50,g.height=g.height/g.width*100>=85?.85*g.width:g.height,g.height<550&&alert("You browser window should have a minimum height of 600px for the application to work! (Currently: "+window.innerHeight+"px)"),g.width<950&&alert("You browser window should have a minimum width of 1000px for the application to work! (Currently: "+window.innerWidth+"px)"),topframe={height:g.height/15*12,width:g.width},frameoffset=g.height/15,bottomframe={height:g.height/15*2,width:g.width},m.fillStyle="#E0E0E0",m.fillRect(0,0,g.width,g.height),m.fillStyle="#FFFFFF",m.fillRect(0,topframe.height,topframe.width,frameoffset),m.strokeRect(0,0,topframe.width,topframe.height),m.strokeRect(0,topframe.height+frameoffset,bottomframe.width,bottomframe.height),m.fillStyle="#FFD000",m.beginPath(),"right"==e)m.arc(topframe.width-1.5*frameoffset-1,topframe.height-1.5*frameoffset-1,1.5*frameoffset,0,2*Math.PI,!1)
+else{if("left"!=e)return
+m.arc(1.5*frameoffset+1,topframe.height-1.5*frameoffset-1,1.5*frameoffset,0,2*Math.PI,!1)}if(m.closePath(),m.fill(),m.font="bold 16px arial",m.textBaseline="middle",m.textAlign="center",m.fillStyle="#000000","right"==e)m.fillText("Self",topframe.width-1.5*frameoffset-1,topframe.height-1.5*frameoffset-1)
+else{if("left"!=e)return
+m.fillText("Self",1.5*frameoffset-1,topframe.height-1.5*frameoffset-1)}m.font="bold 12px arial",n(),u(),document.getElementById("links").innerHTML="<a href=\"#\" id=\"downloadLink\" onclick=\"downloadInnerHtml('outputjson',prompt('Please enter a filename!','results') + '.json','application/json')\">Download results (json)</a> - <a href=\"#\" id=\"downloadLink\" onclick=\"downloadInnerHtml('outputcsv',prompt('Please enter a filename!','results') + '.csv','text/csv')\">Download results (csv)</a> - <a href=\"#\" id=\"toggleHand\" onclick=\"toggleHand('"+("left"==e?"right":"right"==e?"left":"right")+"')\">Toggle left/right handed screen</a>",f()}e=e||"right",document.body.removeChild(document.getElementById("canvasOne"))
+var p=document.createElement("canvas")
+p.id="canvasOne",document.body.insertBefore(p,document.getElementById("download")),document.getElementById("canvasOne").innerHTML="Your browser does not support HTML5 canvas."
+var c,g=document.getElementById("canvasOne"),m=g.getContext("2d")
+"object"==typeof e?(prev=e,e=prev.Setup[0].Control[0].Hand,c=1,t()):(c=0,r())
+var w,v,b,x,y,E,M,H,k,L,T,I,B}window.addEventListener("load",windowLoadHandler,!1)
+var Debugger=function(){}
+Debugger.log=function(e){try{console.log(e)}catch(t){return}},window.File&&window.FileReader&&window.FileList&&window.Blob||alert("You can't upload any files using this browser.")
+var clickTimer=null,ret
+</script>
+
+</head>
+<body>
+<canvas id="canvasOne">
+Your browser does not support HTML5 canvas.
+</canvas>
+<div id="download">
+<p id="outputjson" style="display:none;">
+</p>
+<p id="outputcsv" style="display:none;">
+</p>
+<p id="btext">
+<span id="links"></span>
+<span id="upload"> - Upload a previously saved session (.json format): <input type="file" id="files" name="files" /></span>
+</p>
+
+</div>
+</body>
+</html>
